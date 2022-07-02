@@ -1,9 +1,21 @@
 import React from 'react';
-import { SettingsCounterContainer } from './SettingsCounterContainer';
+import {SettingsCounterContainer} from './SettingsCounterContainer';
 
-export const SettingsCounter = () => {
+type PropsType = {
+    setCounterValue: (counterValue: number) => void;
+    minimalValue: number;
+    setMinimalValue: (minimalValue: number) => void;
+    maximalValue: number;
+    setMaximalValue: (maximalValue: number) => void;
+}
+export const SettingsCounter = (props: PropsType) => {
 
     return (
-        <SettingsCounterContainer/>
+        <SettingsCounterContainer setCounterValue={props.setCounterValue}
+                                  minimalValue={props.minimalValue}
+                                  setMinimalValue={props.setMinimalValue}
+                                  maximalValue={props.maximalValue}
+                                  setMaximalValue={props.setMaximalValue}
+        />
     );
 };
