@@ -12,9 +12,13 @@ export const Counter = () => {
         <>
             <CounterContainer counterValue={counterValue}
                               setCounterValue={setCounterValue}
+                              minimalValue={minimalValue}
+                              setMinimalValue={setMinimalValue}
                               maximalValue={maximalValue}
+                              setMaximalValue={setMaximalValue}
             />
-            <SettingsCounter setCounterValue={setCounterValue}
+            <SettingsCounter counterValue={counterValue}
+                             setCounterValue={setCounterValue}
                              minimalValue={minimalValue}
                              setMinimalValue={setMinimalValue}
                              maximalValue={maximalValue}

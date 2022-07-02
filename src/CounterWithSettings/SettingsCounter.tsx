@@ -2,6 +2,7 @@ import React from 'react';
 import {SettingsCounterContainer} from './SettingsCounterContainer';
 
 type PropsType = {
+    counterValue: number;
     setCounterValue: (counterValue: number) => void;
     minimalValue: number;
     setMinimalValue: (minimalValue: number) => void;
@@ -11,7 +12,8 @@ type PropsType = {
 export const SettingsCounter = (props: PropsType) => {
 
     return (
-        <SettingsCounterContainer setCounterValue={props.setCounterValue}
+        <SettingsCounterContainer counterValue={props.counterValue}
+                                  setCounterValue={props.setCounterValue}
                                   minimalValue={props.minimalValue}
                                   setMinimalValue={props.setMinimalValue}
                                   maximalValue={props.maximalValue}
