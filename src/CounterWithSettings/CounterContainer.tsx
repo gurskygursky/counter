@@ -33,7 +33,7 @@ export const CounterContainer = (props: PropsType) => {
         if (getEndCounterValue) {
             props.setMaximalValue(JSON.parse(getEndCounterValue));
         }
-    }, [])
+    }, []);
 
 
     return (

@@ -16,8 +16,8 @@ export const SettingsCounterContainer = (props: PropsType) => {
     // const [maximalValue, setMaximalValue] = useState<number>(0);
 
     const setStartCounterValue = () => {
-        localStorage.setItem('minimalCounterValue', JSON.stringify(props.minimalValue));
-        localStorage.setItem('maximalCounterValue', JSON.stringify(props.maximalValue));
+        localStorage.setItem('startCounterValue', JSON.stringify(props.minimalValue));
+        localStorage.setItem('endCounterValue', JSON.stringify(props.maximalValue));
         props.setCounterValue(props.minimalValue);
     }
 
