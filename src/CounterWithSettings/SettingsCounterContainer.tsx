@@ -1,5 +1,6 @@
 import React, {ChangeEvent, useState} from 'react';
 import style from './SettingsCounter.module.css';
+import {Button} from '../components/Button';
 
 type PropsType = {
     counterValue: number;
@@ -34,6 +35,8 @@ export const SettingsCounterContainer = (props: PropsType) => {
         props.setCounterValue(0);
     }
 
+    const disabledButtonSet = (props.minimalValue >= props.maximalValue || props.minimalValue === props.counterValue);
+
     return (
         <div className={style.counterWrapper}>
             <div className={style.inputWrapper}>
@@ -53,8 +56,13 @@ export const SettingsCounterContainer = (props: PropsType) => {
                 </div>
             </div>
             <div className={style.buttonsWrapper}>
-                <button className={style.bttn} onClick={setStartCounterValue} disabled={props.minimalValue >= props.maximalValue || props.minimalValue === props.counterValue}>SET</button>
-                <button className={style.bttn} onClick={clearSettingsCounter}>CLEAR</button>
+                <Button buttonTitle={'SET'}
+                        callback={setStartCounterValue}
+                        disabled={disabledButtonSet}
+                />
+                <Button buttonTitle={'CLEAR'} callback={clearSettingsCounter}/>
+                {/*<button className={style.bttn} onClick={setStartCounterValue} disabled={props.minimalValue >= props.maximalValue || props.minimalValue === props.counterValue}>SET</button>*/}
+                {/*<button className={style.bttn} onClick={clearSettingsCounter}>CLEAR</button>*/}
             </div>
         </div>
     );
