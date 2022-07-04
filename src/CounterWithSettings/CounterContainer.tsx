@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import style from './Counter.module.css';
 import {DisplayCounter} from './DisplayCounter';
+import {Button} from '../components/Button';
+import {isDisabled} from '@testing-library/user-event/dist/utils';
 
 type PropsType = {
     counterValue: number;
@@ -35,14 +37,24 @@ export const CounterContainer = (props: PropsType) => {
         }
     }, []);
 
+    const disabledButtonInc = (props.counterValue === props.maximalValue) || (props.counterValue < props.minimalValue);
+    const disabledButtonReset = props.counterValue === 0;
 
     return (
         <div className={style.counterWrapper}>
             <DisplayCounter counterValue={props.counterValue}/>
             <div className={style.buttonsWrapper}>
-                <button className={style.bttn} onClick={increaseCounterValue} disabled={props.counterValue === props.maximalValue || props.counterValue < props.minimalValue}>INC
-                </button>
-                <button className={style.bttn} onClick={resetCounterValue} disabled={props.counterValue === 0}>RESET</button>
+                <Button buttonTitle={'INC'}
+                        callback={increaseCounterValue}
+                        disabled={disabledButtonInc}
+                />
+                <Button buttonTitle={'RESET'}
+                        callback={resetCounterValue}
+                        disabled={disabledButtonReset}
+                />
+                {/*<button className={style.bttn} onClick={increaseCounterValue} disabled={props.counterValue === props.maximalValue || props.counterValue < props.minimalValue}>INC*/}
+                {/*</button>*/}
+                {/*<button className={style.bttn} onClick={resetCounterValue} disabled={props.counterValue === 0}>RESET</button>*/}
             </div>
         </div>
     );
