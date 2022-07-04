@@ -47,10 +47,12 @@ export const CounterContainer = (props: PropsType) => {
                 <Button buttonTitle={'INC'}
                         callback={increaseCounterValue}
                         disabled={disabledButtonInc}
+                        className={style.bttn}
                 />
                 <Button buttonTitle={'RESET'}
                         callback={resetCounterValue}
                         disabled={disabledButtonReset}
+                        className={style.bttn}
                 />
                 {/*<button className={style.bttn} onClick={increaseCounterValue} disabled={props.counterValue === props.maximalValue || props.counterValue < props.minimalValue}>INC*/}
                 {/*</button>*/}

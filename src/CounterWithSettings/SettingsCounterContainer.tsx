@@ -59,8 +59,12 @@ export const SettingsCounterContainer = (props: PropsType) => {
                 <Button buttonTitle={'SET'}
                         callback={setStartCounterValue}
                         disabled={disabledButtonSet}
+                        className={style.bttn}
                 />
-                <Button buttonTitle={'CLEAR'} callback={clearSettingsCounter}/>
+                <Button buttonTitle={'CLEAR'}
+                        callback={clearSettingsCounter}
+                        className={style.bttn}
+                />
                 {/*<button className={style.bttn} onClick={setStartCounterValue} disabled={props.minimalValue >= props.maximalValue || props.minimalValue === props.counterValue}>SET</button>*/}
                 {/*<button className={style.bttn} onClick={clearSettingsCounter}>CLEAR</button>*/}
             </div>
