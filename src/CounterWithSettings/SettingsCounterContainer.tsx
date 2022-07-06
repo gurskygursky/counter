@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import style from './SettingsCounter.module.css';
 import {Button} from '../components/Button';
 
@@ -12,9 +12,6 @@ type PropsType = {
 }
 
 export const SettingsCounterContainer = (props: PropsType) => {
-
-    // const [minimalValue, setMinimalValue] = useState<number>(0);
-    // const [maximalValue, setMaximalValue] = useState<number>(0);
 
     const setStartCounterValue = () => {
         localStorage.setItem('startCounterValue', JSON.stringify(props.minimalValue));
@@ -65,8 +62,6 @@ export const SettingsCounterContainer = (props: PropsType) => {
                         callback={clearSettingsCounter}
                         className={style.bttn}
                 />
-                {/*<button className={style.bttn} onClick={setStartCounterValue} disabled={props.minimalValue >= props.maximalValue || props.minimalValue === props.counterValue}>SET</button>*/}
-                {/*<button className={style.bttn} onClick={clearSettingsCounter}>CLEAR</button>*/}
             </div>
         </div>
     );

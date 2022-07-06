@@ -16,6 +16,7 @@ export const Counter = () => {
                               setMinimalValue={setMinimalValue}
                               maximalValue={maximalValue}
                               setMaximalValue={setMaximalValue}
+
             />
             <SettingsCounter counterValue={counterValue}
                              setCounterValue={setCounterValue}

@@ -7,6 +7,6 @@ type PropsType = {
 
 export const DisplayCounter = (props: PropsType) => {
     return (
-        <div className={style.outputWrapper}>{props.counterValue}</div>
+        <div className={style.outputWrapper}>{props.counterValue }</div>
     );
 };

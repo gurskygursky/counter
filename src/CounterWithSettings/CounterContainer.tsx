@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import style from './Counter.module.css';
 import {DisplayCounter} from './DisplayCounter';
 import {Button} from '../components/Button';
-import {isDisabled} from '@testing-library/user-event/dist/utils';
 
 type PropsType = {
     counterValue: number;
@@ -14,8 +13,6 @@ type PropsType = {
 }
 
 export const CounterContainer = (props: PropsType) => {
-
-    // const [counterValue, setCounterValue] = useState<number>(0);
 
     const increaseCounterValue = () => {
         props.setCounterValue(props.counterValue + 1);
@@ -54,9 +51,6 @@ export const CounterContainer = (props: PropsType) => {
                         disabled={disabledButtonReset}
                         className={style.bttn}
                 />
-                {/*<button className={style.bttn} onClick={increaseCounterValue} disabled={props.counterValue === props.maximalValue || props.counterValue < props.minimalValue}>INC*/}
-                {/*</button>*/}
-                {/*<button className={style.bttn} onClick={resetCounterValue} disabled={props.counterValue === 0}>RESET</button>*/}
             </div>
         </div>
     );
