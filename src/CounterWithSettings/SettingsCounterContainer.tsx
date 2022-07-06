@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import style from './SettingsCounter.module.css';
 import {Button} from '../components/Button';
+import {Input} from '../components/Input';
 
 type PropsType = {
     counterValue: number;
@@ -39,17 +40,25 @@ export const SettingsCounterContainer = (props: PropsType) => {
             <div className={style.inputWrapper}>
                 <div>
                     <span>Min.</span>
-                    <input type={'number'}
-                           value={props.minimalValue}
+                    <Input type={'number'}
                            onChange={onChangeMinimalValueHandler}
+                           value={props.minimalValue}
                     />
+                    {/*<input type={'number'}*/}
+                    {/*       value={props.minimalValue}*/}
+                    {/*       onChange={onChangeMinimalValueHandler}*/}
+                    {/*/>*/}
                 </div>
                 <div>
                     <span>Max.</span>
-                    <input type={'number'}
-                           value={props.maximalValue}
+                    <Input type={'number'}
                            onChange={onChangeMaximalValueHandler}
+                           value={props.maximalValue}
                     />
+                    {/*<input type={'number'}*/}
+                    {/*       value={props.maximalValue}*/}
+                    {/*       onChange={onChangeMaximalValueHandler}*/}
+                    {/*/>*/}
                 </div>
             </div>
             <div className={style.buttonsWrapper}>
