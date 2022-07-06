@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useEffect} from 'react';
 import style from '../CounterWithSettings/SettingsCounter.module.css';
 import {Input} from '../components/Input';
 import {Button} from '../components/Button';
@@ -10,14 +10,24 @@ type PropsType = {
     setMinimalValue: (minimalValue: number) => void;
     maximalValue: number;
     setMaximalValue: (maximalValue: number) => void;
+    error: string;
+    setError: (error: string) => void;
 }
 
 export const SettingsCounter = (props: PropsType) => {
 
+
+
     const setStartCounterValue = () => {
-        localStorage.setItem('startCounterValue', JSON.stringify(props.minimalValue));
-        localStorage.setItem('endCounterValue', JSON.stringify(props.maximalValue));
-        props.setCounterValue(props.minimalValue);
+        // localStorage.setItem('startCounterValue', JSON.stringify(props.minimalValue));
+        // localStorage.setItem('endCounterValue', JSON.stringify(props.maximalValue));
+        if (props.minimalValue >= 0) {
+            props.setCounterValue(props.minimalValue);
+            props.setError('');
+        }
+        if (props.minimalValue < 0 || props.minimalValue === props.maximalValue) {
+            props.setError('Incorrect Value');
+        }
     }
 
     const onChangeMinimalValueHandler = (event: ChangeEvent<HTMLInputElement>) => {

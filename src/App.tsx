@@ -9,6 +9,7 @@ export const App = () => {
     const [counterValue, setCounterValue] = useState<number>(0);
     const [minimalValue, setMinimalValue] = useState<number>(0);
     const [maximalValue, setMaximalValue] = useState<number>(0);
+    const [error, setError] = useState<string>('');
 
     return (
         <div className="app-wrapper">
@@ -18,6 +19,7 @@ export const App = () => {
                      setMinimalValue={setMinimalValue}
                      maximalValue={maximalValue}
                      setMaximalValue={setMaximalValue}
+                     error={error}
             />
             <SettingsCounter counterValue={counterValue}
                              setCounterValue={setCounterValue}
@@ -25,6 +27,8 @@ export const App = () => {
                              setMinimalValue={setMinimalValue}
                              maximalValue={maximalValue}
                              setMaximalValue={setMaximalValue}
+                             error={error}
+                             setError={setError}
             />
             {/*<PrimitiveCounter/>*/}
         </div>

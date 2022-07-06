@@ -11,9 +11,15 @@ type PropsType = {
     setMinimalValue: (minimalValue: number) => void;
     maximalValue: number;
     setMaximalValue: (maximalValue: number) => void;
+    error: string;
 }
 
 export const Counter = (props: PropsType) => {
+
+    useEffect(() => {
+        localStorage.setItem('startCounterValue', JSON.stringify(props.minimalValue));
+        localStorage.setItem('endCounterValue', JSON.stringify(props.maximalValue));
+    }, [props.minimalValue, props.maximalValue]);
 
     useEffect(() => {
         const getStartCounterValue = localStorage.getItem('startCounterValue');
@@ -35,12 +41,12 @@ export const Counter = (props: PropsType) => {
         props.setCounterValue(0);
     }
 
-    const disabledButtonInc = props.counterValue === props.maximalValue || props.counterValue < props.minimalValue;
+    const disabledButtonInc = props.counterValue === props.maximalValue || props.counterValue < props.minimalValue || props.counterValue < 0;
     const disabledButtonReset = props.counterValue === 0;
 
     return (
         <div className={style.counterWrapper}>
-            <DisplayCounter counterValue={props.counterValue}/>
+            <DisplayCounter counterValue={props.counterValue} error={props.error}/>
             <div className={style.buttonsWrapper}>
                 <Button buttonTitle={'INC'}
                         callback={increaseCounterValue}
