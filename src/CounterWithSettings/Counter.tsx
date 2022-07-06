@@ -1,43 +1,58 @@
-import React, {useEffect, useState} from 'react';
-import {CounterContainer} from './CounterContainer';
-import {SettingsCounter} from './SettingsCounter';
+import React, {useEffect} from 'react';
+import style from '../CounterWithSettings/Counter.module.css';
+import {DisplayCounter} from '../CounterWithSettings/DisplayCounter';
+import {Button} from '../components/Button';
 
-export const Counter = () => {
 
-    const [counterValue, setCounterValue] = useState<number>(0);
-    const [minimalValue, setMinimalValue] = useState<number>(0);
-    const [maximalValue, setMaximalValue] = useState<number>(0);
+type PropsType = {
+    counterValue: number;
+    setCounterValue: (counterValue: number) => void;
+    minimalValue: number;
+    setMinimalValue: (minimalValue: number) => void;
+    maximalValue: number;
+    setMaximalValue: (maximalValue: number) => void;
+}
+
+export const Counter = (props: PropsType) => {
 
     useEffect(() => {
         const getStartCounterValue = localStorage.getItem('startCounterValue');
         const getEndCounterValue = localStorage.getItem('endCounterValue');
 
         if (getStartCounterValue) {
-            setMinimalValue(JSON.parse(getStartCounterValue));
-            setCounterValue(JSON.parse(getStartCounterValue));
+            props.setMinimalValue(JSON.parse(getStartCounterValue));
+            props.setCounterValue(JSON.parse(getStartCounterValue));
         }
         if (getEndCounterValue) {
-            setMaximalValue(JSON.parse(getEndCounterValue));
+            props.setMaximalValue(JSON.parse(getEndCounterValue));
         }
     }, []);
 
-    return (
-        <>
-            <CounterContainer counterValue={counterValue}
-                              setCounterValue={setCounterValue}
-                              minimalValue={minimalValue}
-                              setMinimalValue={setMinimalValue}
-                              maximalValue={maximalValue}
-                              setMaximalValue={setMaximalValue}
+    const increaseCounterValue = () => {
+        props.setCounterValue(props.counterValue + 1);
+    }
+    const resetCounterValue = () => {
+        props.setCounterValue(0);
+    }
 
-            />
-            <SettingsCounter counterValue={counterValue}
-                             setCounterValue={setCounterValue}
-                             minimalValue={minimalValue}
-                             setMinimalValue={setMinimalValue}
-                             maximalValue={maximalValue}
-                             setMaximalValue={setMaximalValue}
-            />
-        </>
+    const disabledButtonInc = props.counterValue === props.maximalValue || props.counterValue < props.minimalValue;
+    const disabledButtonReset = props.counterValue === 0;
+
+    return (
+        <div className={style.counterWrapper}>
+            <DisplayCounter counterValue={props.counterValue}/>
+            <div className={style.buttonsWrapper}>
+                <Button buttonTitle={'INC'}
+                        callback={increaseCounterValue}
+                        disabled={disabledButtonInc}
+                        className={style.bttn}
+                />
+                <Button buttonTitle={'RESET'}
+                        callback={resetCounterValue}
+                        disabled={disabledButtonReset}
+                        className={style.bttn}
+                />
+            </div>
+        </div>
     );
 };
