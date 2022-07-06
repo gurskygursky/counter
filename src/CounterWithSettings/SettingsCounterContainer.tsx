@@ -33,7 +33,7 @@ export const SettingsCounterContainer = (props: PropsType) => {
         props.setCounterValue(0);
     }
 
-    const disabledButtonSet = (props.minimalValue >= props.maximalValue || props.minimalValue === props.counterValue);
+    const disabledButtonSet = (props.minimalValue >= props.maximalValue || !!props.counterValue);
 
     return (
         <div className={style.counterWrapper}>
