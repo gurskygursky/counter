@@ -16,11 +16,9 @@ type PropsType = {
 
 export const SettingsCounter = (props: PropsType) => {
 
-
-
     const setStartCounterValue = () => {
-        // localStorage.setItem('startCounterValue', JSON.stringify(props.minimalValue));
-        // localStorage.setItem('endCounterValue', JSON.stringify(props.maximalValue));
+        localStorage.setItem('startCounterValue', JSON.stringify(props.minimalValue));
+        localStorage.setItem('endCounterValue', JSON.stringify(props.maximalValue));
         if (props.minimalValue >= 0) {
             props.setCounterValue(props.minimalValue);
             props.setError('');
