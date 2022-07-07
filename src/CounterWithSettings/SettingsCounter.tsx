@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect} from 'react';
+import React, {ChangeEvent} from 'react';
 import style from '../CounterWithSettings/SettingsCounter.module.css';
 import {Input} from '../components/Input';
 import {Button} from '../components/Button';
@@ -17,8 +17,6 @@ type PropsType = {
 export const SettingsCounter = (props: PropsType) => {
 
     const setStartCounterValue = () => {
-        // localStorage.setItem('startCounterValue', JSON.stringify(props.minimalValue));
-        // localStorage.setItem('endCounterValue', JSON.stringify(props.maximalValue));
         if (props.minimalValue >= 0) {
             props.setCounterValue(props.minimalValue);
             props.setError('');
@@ -52,10 +50,6 @@ export const SettingsCounter = (props: PropsType) => {
                            onChange={onChangeMinimalValueHandler}
                            value={props.minimalValue}
                     />
-                    {/*<input type={'number'}*/}
-                    {/*       value={props.minimalValue}*/}
-                    {/*       onChange={onChangeMinimalValueHandler}*/}
-                    {/*/>*/}
                 </div>
                 <div>
                     <span>Max.</span>
@@ -63,10 +57,6 @@ export const SettingsCounter = (props: PropsType) => {
                            onChange={onChangeMaximalValueHandler}
                            value={props.maximalValue}
                     />
-                    {/*<input type={'number'}*/}
-                    {/*       value={props.maximalValue}*/}
-                    {/*       onChange={onChangeMaximalValueHandler}*/}
-                    {/*/>*/}
                 </div>
             </div>
             <div className={style.buttonsWrapper}>
@@ -81,12 +71,5 @@ export const SettingsCounter = (props: PropsType) => {
                 />
             </div>
         </div>
-        // <SettingsCounterContainer counterValue={props.counterValue}
-        //                           setCounterValue={props.setCounterValue}
-        //                           minimalValue={props.minimalValue}
-        //                           setMinimalValue={props.setMinimalValue}
-        //                           maximalValue={props.maximalValue}
-        //                           setMaximalValue={props.setMaximalValue}
-        // />
     );
 };

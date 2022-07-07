@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import style from '../CounterWithSettings/Counter.module.css';
 import {DisplayCounter} from '../CounterWithSettings/DisplayCounter';
 import {Button} from '../components/Button';
@@ -15,24 +15,6 @@ type PropsType = {
 }
 
 export const Counter = (props: PropsType) => {
-
-    // useEffect(() => {
-    //     localStorage.setItem('startCounterValue', JSON.stringify(props.minimalValue));
-    //     localStorage.setItem('endCounterValue', JSON.stringify(props.maximalValue));
-    // }, [props.minimalValue, props.maximalValue]);
-
-    // useEffect(() => {
-    //     const getStartCounterValue = localStorage.getItem('startCounterValue');
-    //     const getEndCounterValue = localStorage.getItem('endCounterValue');
-    //
-    //     if (getStartCounterValue) {
-    //         props.setMinimalValue(JSON.parse(getStartCounterValue));
-    //         props.setCounterValue(JSON.parse(getStartCounterValue));
-    //     }
-    //     if (getEndCounterValue) {
-    //         props.setMaximalValue(JSON.parse(getEndCounterValue));
-    //     }
-    // }, []);
 
     const increaseCounterValue = () => {
         props.setCounterValue(props.counterValue + 1);
